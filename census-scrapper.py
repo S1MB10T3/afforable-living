@@ -1,6 +1,9 @@
+import os
 import datetime
 import pandas as pd
 import requests
+from dotenv import load_dotenv
+load_dotenv()
 
 # https://factfinder-api.herokuapp.com/
 
@@ -15,7 +18,7 @@ get_vars = ["B01003_001E", "B10010_001E"]
 
 predicates = {}
 
-predicates["key"] = ""
+predicates["key"] = os.getenv('CENSUS_KEY')
 predicates["get"] = ",".join(get_vars)
 predicates["for"] = "zip code tabulation area:" + zip_code
 
